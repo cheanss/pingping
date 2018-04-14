@@ -1,0 +1,19 @@
+<?php
+namespace PhpCsFixer;
+$finder = Finder::create()
+    ->name('*.php')
+    ->in(__DIR__.DIRECTORY_SEPARATOR.'app')
+    ->in(__DIR__.DIRECTORY_SEPARATOR.'tests')
+;
+return Config::create()
+    ->setUsingCache(false)
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'ordered_imports' => true,
+        'phpdoc_order' => true,
+        'self_accessor' => false,
+    ])
+    ->setFinder($finder)
+;
